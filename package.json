@@ -1,0 +1,26 @@
+{
+  "name": "termux-api-library",
+  "version": "1.0.0",
+  "description": "Termux-api library for NodeJS",
+  "main": "index.js",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rn0x/termux-api-library.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rn0x/termux-api-library/issues"
+  },
+  "homepage": "https://wwebjs.dev/",
+  "keywords": [],
+  "author": "rn0x",
+  "license": "ISC",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "fs-extra": "^10.1.0",
+    "node-fetch": "^3.2.10"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.13"
+  }
+}
