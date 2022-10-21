@@ -4,6 +4,109 @@ import fs from 'fs-extra';
 
 class Api {
 
+    constructor() {
+
+        /**
+         * Play specified file using Media Player API.   
+         * 
+         * @example 
+         * await api.termux_media_player.info()
+         * await api.termux_media_player.play()
+         * await api.termux_media_player.pause()
+         * await api.termux_media_player.stop()
+         * 
+        */
+
+        this.termux_media_player = {
+
+            /**
+             * Displays current playback information
+             * 
+             * @example 
+             * 
+             * import api from './index.js';
+             *
+             * const info = await api.termux_media_player.info();
+             * console.log(info);
+             * 
+             * @return {Promise<string>} Output .  
+            */
+
+            info: async () => {
+                let Output = await execut('termux-media-player info');
+                return Output
+            },
+            /**
+             * Resumes playback if paused
+             * 
+             * @example 
+             * 
+             * import api from './index.js';
+             *
+             * const play = await api.termux_media_player.play();
+             * console.log(play);
+             * 
+             * 
+             * @return {Promise<string>} Output .  
+            */
+            play: async () => {
+                let Output = await execut('termux-media-player play');
+                return Output
+            },
+            /**
+             * Plays specified media file
+             * 
+             * @example 
+             * 
+             * import api from './index.js';
+             *
+             * const playFile = await api.termux_media_player.playFile(path);
+             * console.log(playFile);
+             * 
+             * @param {string} path media file path
+             * @return {Promise<string>} Output .  
+            */
+            playFile: async (path) => {
+                let Output = await execut(`termux-media-player play ${path}`);
+                return Output
+            },
+            /**
+             * Pauses playback
+             * 
+             * @example 
+             * 
+             * import api from './index.js';
+             *
+             * const pause = await api.termux_media_player.pause();
+             * console.log(pause);
+             * 
+             * 
+             * @return {Promise<string>} Output .  
+            */
+            pause: async () => {
+                let Output = await execut('termux-media-player pause');
+                return Output
+            },
+            /**
+             * Quits playback
+             * 
+             * @example 
+             * 
+             * import api from './index.js';
+             *
+             * const stop = await api.termux_media_player.stop();
+             * console.log(stop);
+             * 
+             * 
+             * @return {Promise<string>} Output .  
+            */
+            stop: async () => {
+                let Output = await execut('termux-media-player stop');
+                return Output
+            },
+        }
+    }
+
     /**
      * List call log history.
      * 
@@ -320,7 +423,6 @@ class Api {
 
         return JSON?.parse(Output);
     }
-
 
 
 }
