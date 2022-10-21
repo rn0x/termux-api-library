@@ -11,10 +11,10 @@
   "bugs": {
     "url": "https://github.com/rn0x/termux-api-library/issues"
   },
-  "homepage": "https://wwebjs.dev/",
+  "homepage": "https://github.com/rn0x/termux-api-library",
   "keywords": [],
   "author": "rn0x",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "child_process": "^1.0.2",
     "fs-extra": "^10.1.0",
