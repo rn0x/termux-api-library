@@ -12,6 +12,7 @@ class Api {
          * @example 
          * await api.termux_media_player.info()
          * await api.termux_media_player.play()
+         * await api.termux_media_player.playFile(path)
          * await api.termux_media_player.pause()
          * await api.termux_media_player.stop()
          * 
@@ -105,6 +106,71 @@ class Api {
                 return Output
             },
         }
+
+        /**
+         * Record using microphone on your device.  
+         * 
+         * @example 
+         * await api.termux_microphone_record.start(path, limit)
+         * await api.termux_microphone_record.info()
+         * await api.termux_microphone_record.stop()
+         * 
+        */
+
+        this.termux_microphone_record = {
+            /**
+             * Start recording to specific file and specified limit
+             * 
+             * @example 
+             * 
+             * import api from './index.js';
+             *
+             * const path = '/data/data/com.termux/files/home/filename.mp3'
+             * const limit = 0
+             * const start = await api.termux_microphone_record.start(path, limit);
+             * console.log(start);
+             * 
+             * @param {string} path The path of the recorded file
+             * @param {(number|string)} limit  The exact time of the audio recording in seconds (default: 0)
+             * @return {Promise<string>} Output .  
+            */
+            start: async (path, limit = 0) => {
+                let Output = await execut(`termux-microphone-record -f ${path} -l ${limit}`);
+                return Output
+            },
+            /**
+             * Quits recording
+             * 
+             * @example 
+             * 
+             * import api from './index.js';
+             *
+             * const stop = await api.termux_microphone_record.stop();
+             * console.log(stop);
+             * 
+             * @return {Promise<string>} Output .  
+            */
+            stop: async () => {
+                let Output = await execut('termux-microphone-record -q');
+                return Output
+            },
+            /**
+             * Get info about current recording
+             * 
+             * @example 
+             * 
+             * import api from './index.js';
+             *
+             * const info = await api.termux_microphone_record.info();
+             * console.log(info);
+             * 
+             * @return {Promise<object>} Output json
+            */
+            info: async () => {
+                let Output = await execut('termux-microphone-record -i');
+                return JSON?.parse(Output);
+            }
+        }
     }
 
     /**
@@ -125,7 +191,7 @@ class Api {
     async termux_call_log(limit, callback) {
 
         await execut(`termux-call-log -l ${limit}`, (e) => {
-            callback(JSON?.parse(e))
+            callback(JSON?.parse(e));
         });
     }
 
@@ -411,7 +477,7 @@ class Api {
      * @return {object} Output displayed in json format.  
      */
 
-    async termux_location(provider, request, callback) {
+    async termux_location(provider = 'gps', request = 'once', callback) {
 
         let Output = await execut(`termux-location -p ${provider} -r ${request}`);
 
