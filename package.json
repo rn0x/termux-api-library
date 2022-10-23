@@ -1,6 +1,6 @@
 {
   "name": "termux-api-library",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Termux-api library for NodeJS",
   "main": "index.js",
   "repository": {
@@ -11,7 +11,17 @@
     "url": "https://github.com/rn0x/termux-api-library/issues"
   },
   "homepage": "https://github.com/rn0x/termux-api-library",
-  "keywords": [],
+  "keywords": [
+    "termux",
+    "termux-api",
+    "termux api nodejs",
+    "termux library",
+    "api",
+    "nodejs",
+    "call termux",
+    "sms termux",
+    "android"
+  ],
   "author": "rn0x",
   "license": "MIT",
   "dependencies": {

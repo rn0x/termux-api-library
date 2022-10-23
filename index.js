@@ -778,6 +778,29 @@ class Api {
         return JSON?.parse(Output);
 
     }
+
+    /** 
+     * Toggles Wi-Fi on/off. 
+     * 
+     * Program accepts a one of these values:
+     * 
+     *   true - enable Wi-Fi
+     * 
+     *   false - disable Wi-Fi
+     * 
+     * @example 
+     * 
+     * const values = true // true - enable Wi-Fi | false - disable Wi-Fi
+     * await api.termux_wifi_enable(values);
+     *
+     * @param {true | false} values true - enable Wi-Fi | false - disable Wi-Fi
+     */
+
+    async termux_wifi_enable(values) {
+
+        await execut(`termux-wifi-enable ${values}`);
+
+    }
 }
 
 module.exports = new Api

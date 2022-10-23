@@ -387,6 +387,14 @@ const wifi = await api.termux_wifi_connectioninfo();
 console.log(wifi);
 ```
 
+- [termux-wifi-enable](https://wiki.termux.com/wiki/Termux-wifi-enable)
+Toggles Wi-Fi on/off. 
+
+```js
+const values = true // true - enable Wi-Fi | false - disable Wi-Fi
+await api.termux_wifi_enable(values);
+```
+
 # License
 
 [ MIT license ](https://github.com/rn0x/termux-api-library/blob/main/LICENSE)
