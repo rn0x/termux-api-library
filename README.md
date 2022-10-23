@@ -325,6 +325,19 @@ const text = "hello world"
 await api.termux_sms_send(number, slot, text);
 ```
 
+- [termux-telephony-call](https://wiki.termux.com/wiki/Termux-telephony-call)
+Call a telephony number. 
+
+```js
+// connect
+const number = 05592xxxxx
+await api.termux_telephony_call.connect(number);
+
+// Close call .
+
+await api.termux_telephony_call.close();
+```
+
 # License
 
 [ MIT license ](https://github.com/rn0x/termux-api-library/blob/main/LICENSE)

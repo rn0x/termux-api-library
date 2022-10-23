@@ -177,6 +177,49 @@ class Api {
                 return JSON?.parse(Output);
             }
         }
+
+        /**
+         * Call a telephony number.   
+         * 
+         * @example 
+         * await api.termux_telephony_call.connect(number);
+         * await api.termux_telephony_call.close();
+         * 
+        */
+
+        this.termux_telephony_call = {
+
+            /**
+             * Call a telephony number. 
+             * 
+             * @example 
+             *
+             * const number = 05592xxxxx
+             * await api.termux_telephony_call.connect(number);
+             * 
+             * @param {(string | number)} number Requires a telephony number specified in appropriate format. 
+             * @return {Promise<void>} 
+            */
+
+            connect: async (number) => {
+                await execut(`termux-telephony-call ${number}`);
+                return `Connect ${number}`
+            },
+
+            /**
+             * Close the call . 
+             * 
+             * @example 
+             *
+             * await api.termux_telephony_call.close(); 
+             * @return {Promise<void>} 
+            */
+
+            close: async () => {
+                await execut('termux-telephony-call 1');
+                return 'Close the call'
+            },
+        }
     }
 
     /**
