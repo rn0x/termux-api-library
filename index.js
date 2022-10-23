@@ -641,10 +641,36 @@ class Api {
      * @param {string} text text message.
      */
 
-    async termux_sms_send(number, slot = "0", text) {
+     async termux_sms_send(number, slot = "0", text) {
 
         await execut(`termux-sms-send -n ${number} -s ${slot} ${text}`);
 
+    }
+
+    /** 
+     * Get information about all observed cell information from all radios on the device including the primary and neighboring cells. 
+     * 
+     * @example 
+     * 
+     * 
+     * const info = await api.termux_telephony_cellinfo();
+     * console.log(info)
+     *
+     * @param {function} callback Output displayed in json format. 
+     * @return {object} Output displayed in json format.
+     */
+
+     async termux_telephony_cellinfo(callback) {
+
+        let Output = await execut('termux-telephony-cellinfo');
+
+        if (callback) {
+
+            callback(JSON?.parse(Output));
+
+        }
+
+        return JSON?.parse(Output);
     }
 }
 
