@@ -24,8 +24,6 @@ class Api {
              * Displays current playback information
              * 
              * @example 
-             * 
-             * import api from './index.js';
              *
              * const info = await api.termux_media_player.info();
              * console.log(info);
@@ -41,8 +39,6 @@ class Api {
              * Resumes playback if paused
              * 
              * @example 
-             * 
-             * import api from './index.js';
              *
              * const play = await api.termux_media_player.play();
              * console.log(play);
@@ -58,8 +54,6 @@ class Api {
              * Plays specified media file
              * 
              * @example 
-             * 
-             * import api from './index.js';
              *
              * const playFile = await api.termux_media_player.playFile(path);
              * console.log(playFile);
@@ -75,8 +69,6 @@ class Api {
              * Pauses playback
              * 
              * @example 
-             * 
-             * import api from './index.js';
              *
              * const pause = await api.termux_media_player.pause();
              * console.log(pause);
@@ -92,8 +84,6 @@ class Api {
              * Quits playback
              * 
              * @example 
-             * 
-             * import api from './index.js';
              *
              * const stop = await api.termux_media_player.stop();
              * console.log(stop);
@@ -122,8 +112,6 @@ class Api {
              * Start recording to specific file and specified limit
              * 
              * @example 
-             * 
-             * import api from './index.js';
              *
              * const path = '/data/data/com.termux/files/home/filename.mp3'
              * const limit = 0
@@ -142,8 +130,6 @@ class Api {
              * Quits recording
              * 
              * @example 
-             * 
-             * import api from './index.js';
              *
              * const stop = await api.termux_microphone_record.stop();
              * console.log(stop);
@@ -158,8 +144,6 @@ class Api {
              * Get info about current recording
              * 
              * @example 
-             * 
-             * import api from './index.js';
              *
              * const info = await api.termux_microphone_record.info();
              * console.log(info);
@@ -176,10 +160,7 @@ class Api {
     /**
      * List call log history.
      * 
-     * @example 
-     * 
-     * import api from './index.js';
-     * 
+     * @example  
      * await api.termux_call_log(10 , (e) => {
      *    console.log(e);
      * })
@@ -198,10 +179,7 @@ class Api {
     /**
      * Get the status of the device battery. 
      * 
-     * @example 
-     * 
-     * import api from './index.js';
-     * 
+     * @example  
      * await api.termux_battery_status((e) => {
      *    console.log(e);
      * })
@@ -220,10 +198,7 @@ class Api {
     /**
      * Get information about device camera(s). 
      * 
-     * @example 
-     * 
-     * import api from './index.js';
-     * 
+     * @example  
      * await api.termux_camera_info((e) => {
      *    console.log(e);
      * })
@@ -243,10 +218,7 @@ class Api {
     /**
      * Set the screen brightness between 0 and 255.
      * 
-     * @example 
-     * 
-     * import api from './index.js';
-     * 
+     * @example  
      * await api.termux_brightness(brightness)
      *
      * @param {(number|string)} brightness  Brightness value should be between 0 and 255 or auto.
@@ -260,17 +232,14 @@ class Api {
     /**
      * Take a photo and save it to a file in JPEG format.
      * 
-     * @example 
-     * 
-     * import api from './index.js';
-     * 
+     * @example  
      * await api.termux_camera_photo(0, './test.jpeg')
      *
      * @param {(number|string)} camera_id ID of the camera to use , default: 0
      * @param {string} path Photo is saved at specified file path
      */
 
-    async termux_camera_photo(camera_id, path) {
+    async termux_camera_photo(camera_id = 0, path) {
 
         await execut(`termux-camera-photo -c ${camera_id} ${path}`);
     }
@@ -278,10 +247,7 @@ class Api {
     /**
      * Get the system clipboard text.  
      * 
-     * @example 
-     * 
-     * import api from './index.js';
-     * 
+     * @example  
      * await api.termux_clipboard_get((e) => {
      *    console.log(e);
      * })
@@ -300,10 +266,7 @@ class Api {
     /**
      * Set the system clipboard text. The text to set is either supplied as arguments or read from stdin if no arguments are given.   
      * 
-     * @example 
-     * 
-     * import api from './index.js';
-     * 
+     * @example  
      * await api.termux_clipboard_set("hello world")
      *
      * @param {string} text Text is read either from standard input or from command line arguments. 
@@ -312,16 +275,13 @@ class Api {
 
     async termux_clipboard_set(text) {
 
-        await execut(`termux-clipboard-set ${text}`);
+        await execut(`termux-clipboard-set "${text}"`);
     }
 
     /** 
      * List all contacts. 
      * 
-     * @example 
-     * 
-     * import api from './index.js';
-     * 
+     * @example  
      * await api.termux_contact_list((e) => {
      *    console.log(e);
      * })
@@ -340,10 +300,7 @@ class Api {
     /**
      * Show dialog widget for user input. 
      * 
-     * @example 
-     * 
-     * import api from './index.js';
-     * 
+     * @example  
      * const hint = 'Put your password here'
      * const title = 'input password'
      * 
@@ -368,7 +325,7 @@ class Api {
 
         if (multiple_lines !== inputNumbers) {
 
-            await execut(`termux-dialog -i ${hint} -t ${title} ${m} ${n}, ${p}`, (e) => {
+            await execut(`termux-dialog -i "${hint}" -t "${title}" ${m} ${n}, ${p}`, (e) => {
                 callback(JSON?.parse(e))
             });
 
@@ -382,10 +339,7 @@ class Api {
     /**
      * Download Files . 
      * 
-     * @example 
-     * 
-     * import api from './index.js';
-     * 
+     * @example  
      * const url = 'https://example.com/image.jpeg'
      * const filename = 'photo_2022'
      * const savePath = '/data/data/com.termux/files/home'
@@ -430,9 +384,6 @@ class Api {
      * 
      * @example 
      * 
-     * import api from './index.js';
-     *
-     * 
      * await api.termux_fingerprint((e) => {
      *    console.log(e);
      * })
@@ -457,10 +408,7 @@ class Api {
     
      * 3- Do not expect immediate location result. Even network location request may take some time. 
      * 
-     * @example 
-     * 
-     * import api from './index.js';
-     * 
+     * @example  
      * 
      * await api.termux_location("gps", "once", (e) => {
      *    console.log(e);
@@ -477,7 +425,7 @@ class Api {
      * @return {object} Output displayed in json format.  
      */
 
-    async termux_location(provider = 'gps', request = 'once', callback) {
+     async termux_location(provider = 'gps', request = 'once', callback) {
 
         let Output = await execut(`termux-location -p ${provider} -r ${request}`);
 
@@ -490,7 +438,24 @@ class Api {
         return JSON?.parse(Output);
     }
 
+    /** 
+     * Use fingerprint sensor on device to check for authentication. 
+     * 
+     * This API is available only for devices running Android 6 (Marshmallow) or higher.  
+     * 
+     * @example 
+     * 
+     * await api.termux_notification(termux_notification(title, text, id);
+     *
+     * @param {function} callback This program does not take any arguments. 
+     * Output is returned in json format. 
+     */
 
+    async termux_notification(title, text, id) {
+
+        await execut(`termux-notification -t ${title} -c ${text} -i ${id}`);
+
+    }
 }
 
 module.exports = new Api
