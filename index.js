@@ -582,6 +582,27 @@ class Api {
         return JSON?.parse(Output);
 
     }
+
+    /** 
+     * Send a SMS message to the specified recipient number(s). 
+     * 
+     * @example 
+     * 
+     * const number = 05592xxxxx
+     * const slot = "0"
+     * const text = "hello world"
+     * await api.termux_sms_send(number, slot, text);
+     *
+     * @param {number | string} number number(s)  recipient number(s) - separate multiple numbers by commas
+     * @param {"0" | "1"} slot slot sim slot to use - silently fails if slot number is invalid or if missing READ_PHONE_STATE permission (default: 0)
+     * @param {string} text text message.
+     */
+
+    async termux_sms_send(number, slot = "0", text) {
+
+        await execut(`termux-sms-send -n ${number} -s ${slot} ${text}`);
+
+    }
 }
 
 module.exports = new Api
