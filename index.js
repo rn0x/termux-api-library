@@ -425,7 +425,7 @@ class Api {
      * @return {object} Output displayed in json format.  
      */
 
-     async termux_location(provider = 'gps', request = 'once', callback) {
+    async termux_location(provider = 'gps', request = 'once', callback) {
 
         let Output = await execut(`termux-location -p ${provider} -r ${request}`);
 
@@ -439,21 +439,20 @@ class Api {
     }
 
     /** 
-     * Use fingerprint sensor on device to check for authentication. 
-     * 
-     * This API is available only for devices running Android 6 (Marshmallow) or higher.  
+     * Display a system notification
      * 
      * @example 
      * 
-     * await api.termux_notification(termux_notification(title, text, id);
+     * await api.termux_notification(title, text, id);
      *
-     * @param {function} callback This program does not take any arguments. 
-     * Output is returned in json format. 
+     * @param {string} title notification title to show .
+     * @param {string} text content to show in the notification.
+     * @param {(string | number)} id notification id (will overwrite any previous notification with the same id)
      */
 
     async termux_notification(title, text, id) {
 
-        await execut(`termux-notification -t ${title} -c ${text} -i ${id}`);
+        await execut(`termux-notification -t "${title}" -c "${text}" -i ${id}`);
 
     }
 }
