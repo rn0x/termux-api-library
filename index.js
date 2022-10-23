@@ -1,6 +1,6 @@
 //        Termux-api library for NodeJS 
 //            Copyright (c) 2022 rn0x
-//  https://github.com/rn0x/termux-api-library/
+//  https://github.com/rn0x/termux-api-library
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
