@@ -365,6 +365,14 @@ const text = "hello world"
 await api.termux_toast(position, background, text_color, text);
 ```
 
+- [termux-torch](https://wiki.termux.com/wiki/Termux-torch)
+Toggle LED Torch on device.
+
+```js
+const values = "on" // on - enable torch. | off - disable torch.
+await api.termux_torch(values);
+```
+
 # License
 
 [ MIT license ](https://github.com/rn0x/termux-api-library/blob/main/LICENSE)

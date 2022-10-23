@@ -716,9 +716,32 @@ class Api {
      * @param {string} text text message.
      */
 
-     async termux_toast(position = "middle", background = "gray", text_color = "white", text) {
+    async termux_toast(position = "middle", background = "gray", text_color = "white", text) {
 
         await execut(`termux-toast -g ${position} -b ${background} -c ${text_color} "${text}"`);
+
+    }
+
+    /** 
+     * Toggle LED Torch on device. 
+     * 
+     * Program accepts a one of these values:
+     * 
+     *   on - enable torch.
+     * 
+     *   off - disable torch.
+     * 
+     * @example 
+     * 
+     * const values = "on" // on - enable torch. | off - disable torch.
+     * await api.termux_torch(values);
+     *
+     * @param {"on" | "off"} values on - enable torch. | off - disable torch.
+     */
+
+    async termux_torch(values) {
+
+        await execut(`termux-torch ${values}`);
 
     }
 }
