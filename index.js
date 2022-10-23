@@ -559,8 +559,8 @@ class Api {
      * 
      * or 
      * 
-     * const sensor = await api.termux_sms_list(type, limit, sender);
-     * console.log(sensor);
+     * const list = await api.termux_sms_list(type, limit, sender);
+     * console.log(list);
      *
      * @param {"all" | "inbox" | "sent" | "draft" | "outbox"} type the type of messages to list (default: inbox): all|inbox|sent|draft|outbox
      * @param {(number | string)} limit offset in sms list (default: 10)

@@ -311,8 +311,8 @@ await api.termux_sms_list(type, limit, sender, (e) => {
 
 or
 
-const sensor = await api.termux_sms_list(type, limit, sender);
-console.log(sensor);
+const list = await api.termux_sms_list(type, limit, sender);
+console.log(list);
 ```
 
 - [termux-sms-send](https://wiki.termux.com/wiki/Termux-sms-send)
