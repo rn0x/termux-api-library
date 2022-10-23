@@ -354,6 +354,17 @@ const deviceinfo = await api.termux_telephony_deviceinfo();
 console.log(deviceinfo);
 ```
 
+- [termux-toast](https://wiki.termux.com/wiki/Termux-toast)
+Show text in a Toast (a transient popup). 
+
+```js
+const position = "middle"
+const background = "gray"
+const text_color = "white"
+const text = "hello world"
+await api.termux_toast(position, background, text_color, text);
+```
+
 # License
 
 [ MIT license ](https://github.com/rn0x/termux-api-library/blob/main/LICENSE)

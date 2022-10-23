@@ -194,7 +194,7 @@ class Api {
              * 
              * @example 
              *
-             * const number = 05592xxxxx
+             * const number = "05592xxxxx"
              * await api.termux_telephony_call.connect(number);
              * 
              * @param {(string | number)} number Requires a telephony number specified in appropriate format. 
@@ -631,7 +631,7 @@ class Api {
      * 
      * @example 
      * 
-     * const number = 05592xxxxx
+     * const number = "05592xxxxx"
      * const slot = "0"
      * const text = "hello world"
      * await api.termux_sms_send(number, slot, text);
@@ -697,6 +697,29 @@ class Api {
         }
 
         return JSON?.parse(Output);
+    }
+
+    /** 
+     * Show a transient popup notification. 
+     * 
+     * @example 
+     * 
+     * const position = "middle"
+     * const background = "gray"
+     * const text_color = "white"
+     * const text = "hello world"
+     * await api.termux_toast(position, background, text_color, text);
+     *
+     * @param {"middle" | "top" | "bottom"} position set position of toast: [top, middle, or bottom] (default: middle)
+     * @param {"black" | "silver" | "gray" | "white" | "red" | "fuchsia" | "green" | "yellow" | "blue"} background set background color (default: gray)
+     * @param {"black" | "silver" | "gray" | "white" | "red" | "fuchsia" | "green" | "yellow" | "blue"} text_color set text color (default: white)
+     * @param {string} text text message.
+     */
+
+     async termux_toast(position = "middle", background = "gray", text_color = "white", text) {
+
+        await execut(`termux-toast -g ${position} -b ${background} -c ${text_color} "${text}"`);
+
     }
 }
 
