@@ -801,6 +801,38 @@ class Api {
         await execut(`termux-wifi-enable ${values}`);
 
     }
+
+    /** 
+     *  Get information about the last wifi scan.
+     * 
+     * @example 
+     * 
+     * await api.termux_wifi_scaninfo((e) => {
+     *     console.log(e);
+     * });
+     * 
+     * or 
+     * 
+     * const scaninfo = await api.termux_wifi_scaninfo();
+     * console.log(scaninfo);
+     *
+     * @param {function} callback Output displayed in json format. 
+     * @return {Array} Output displayed in json format.
+     */
+
+    async termux_wifi_scaninfo(callback) {
+
+        let Output = await execut(`termux-wifi-scaninfo`);
+
+        if (callback) {
+
+            callback(JSON?.parse(Output));
+
+        }
+
+        return JSON?.parse(Output);
+
+    }
 }
 
 module.exports = new Api

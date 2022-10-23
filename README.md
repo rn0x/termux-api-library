@@ -395,6 +395,20 @@ const values = true // true - enable Wi-Fi | false - disable Wi-Fi
 await api.termux_wifi_enable(values);
 ```
 
+- [termux-wifi-scaninfo](https://wiki.termux.com/wiki/Termux-wifi-scaninfo)
+Retrieves last wifi scan information. 
+
+```js
+await api.termux_wifi_scaninfo((e) => {
+    console.log(e);
+});
+
+or  
+
+const scaninfo = await api.termux_wifi_scaninfo();
+console.log(scaninfo);
+```
+
 # License
 
 [ MIT license ](https://github.com/rn0x/termux-api-library/blob/main/LICENSE)
