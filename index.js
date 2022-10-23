@@ -1,3 +1,25 @@
+//        Termux-api library for NodeJS 
+//            Copyright (c) 2022 rn0x
+//  https://github.com/rn0x/termux-api-library/
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
 const execut = require('./child_process.js');
 const fetch = require('node-fetch');
 const fs = require('fs-extra');
@@ -450,9 +472,25 @@ class Api {
      * @param {(string | number)} id notification id (will overwrite any previous notification with the same id)
      */
 
-    async termux_notification(title, text, id) {
+     async termux_notification(title, text, id) {
 
         await execut(`termux-notification -t "${title}" -c "${text}" -i ${id}`);
+
+    }
+
+    /** 
+     * Remove a notification previously shown with "termux-notification --id". 
+     * 
+     * @example 
+     * 
+     * await api.termux_notification_remove(id);
+     *
+     * @param {(string | number)} id Notification id is a value previously used to show notification with command "termux-notification --id". 
+     */
+
+     async termux_notification_remove(id) {
+
+        await execut(`termux-notification-remove ${id}`);
 
     }
 }
