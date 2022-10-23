@@ -641,7 +641,7 @@ class Api {
      * @param {string} text text message.
      */
 
-     async termux_sms_send(number, slot = "0", text) {
+    async termux_sms_send(number, slot = "0", text) {
 
         await execut(`termux-sms-send -n ${number} -s ${slot} ${text}`);
 
@@ -660,9 +660,35 @@ class Api {
      * @return {object} Output displayed in json format.
      */
 
-     async termux_telephony_cellinfo(callback) {
+    async termux_telephony_cellinfo(callback) {
 
         let Output = await execut('termux-telephony-cellinfo');
+
+        if (callback) {
+
+            callback(JSON?.parse(Output));
+
+        }
+
+        return JSON?.parse(Output);
+    }
+
+    /** 
+     * Get information about the telephony device.
+     * 
+     * @example 
+     * 
+     * 
+     * const deviceinfo = await api.termux_telephony_deviceinfo();
+     * console.log(deviceinfo)
+     *
+     * @param {function} callback Output displayed in json format. 
+     * @return {object} Output displayed in json format.
+     */
+
+    async termux_telephony_deviceinfo(callback) {
+
+        let Output = await execut('termux-telephony-deviceinfo');
 
         if (callback) {
 
