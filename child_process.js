@@ -1,4 +1,4 @@
-import { exec } from "child_process";
+const { exec } = require('child_process');
 
 
 /**
@@ -18,7 +18,8 @@ import { exec } from "child_process";
 **/
 
 
-export default async function execut(command_line, callback) {
+module.exports = async function execut(command_line, callback) {
+
    return new Promise((resolve, reject) => {
       try {
 

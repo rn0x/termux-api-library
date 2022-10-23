@@ -1,6 +1,6 @@
-import execut from './child_process.js';
-import fetch from 'node-fetch';
-import fs from 'fs-extra';
+const execut = require('./child_process.js');
+const fetch = require('node-fetch');
+const fs = require('fs-extra');
 
 class Api {
 
@@ -493,4 +493,4 @@ class Api {
 
 }
 
-export default new Api
+module.exports = new Api
