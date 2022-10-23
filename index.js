@@ -511,6 +511,38 @@ class Api {
         await execut(`termux-share -a ${action} ${filepath}`);
 
     }
+
+    /** 
+     * Get information about types of sensors
+     * 
+     * @example 
+     * 
+     * await api.termux_sensor((e) => {
+     *   console.log(e);
+     * });
+     * 
+     * or 
+     * 
+     * const sensor = await api.termux_sensor();
+     * console.log(sensor);
+     *
+     * @param {function} callback Output displayed in json format. 
+     * @return {object} Output displayed in json format.
+     */
+
+     async termux_sensor(callback) {
+
+        let Output = await execut(`termux-sensor -l`);
+
+        if (callback) {
+
+            callback(JSON?.parse(Output));
+
+        }
+
+        return JSON?.parse(Output);
+
+    }
 }
 
 module.exports = new Api
