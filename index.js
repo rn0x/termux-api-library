@@ -493,6 +493,24 @@ class Api {
         await execut(`termux-notification-remove ${id}`);
 
     }
+
+    /** 
+     * Share a specified file from standard input. 
+     * 
+     * @example 
+     * 
+     * const filepath = "../image.jpeg"
+     * await api.termux_share('send', filepath);
+     *
+     * @param {"edit" | "send" | "view"} action which action to performed on the shared content: edit/send/view (default:view).
+     * @param {string} filepath file path.
+     */
+
+     async termux_share(action = "view", filepath) {
+
+        await execut(`termux-share -a ${action} ${filepath}`);
+
+    }
 }
 
 module.exports = new Api
