@@ -338,6 +338,22 @@ await api.termux_telephony_call.connect(number);
 await api.termux_telephony_call.close();
 ```
 
+- [termux-telephony-cellinfo](https://wiki.termux.com/wiki/Termux-telephony-cellinfo)
+Get information about all observed cell information from all radios on the device including the primary and neighboring cells.
+
+```js
+const info = await api.termux_telephony_cellinfo();
+console.log(info);
+```
+
+- [termux-telephony-deviceinfo](https://wiki.termux.com/wiki/Termux-telephony-deviceinfo)
+Get information about the telephony device.
+
+```js
+const deviceinfo = await api.termux_telephony_deviceinfo();
+console.log(deviceinfo);
+```
+
 # License
 
 [ MIT license ](https://github.com/rn0x/termux-api-library/blob/main/LICENSE)
