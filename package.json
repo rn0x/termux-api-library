@@ -31,8 +31,5 @@
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13"
-  },
-  "publishConfig": {
-    "@rn0x:registry": "https://npm.pkg.github.com"
   }
 }
