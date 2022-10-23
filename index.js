@@ -472,7 +472,7 @@ class Api {
      * @param {(string | number)} id notification id (will overwrite any previous notification with the same id)
      */
 
-     async termux_notification(title, text, id) {
+    async termux_notification(title, text, id) {
 
         await execut(`termux-notification -t "${title}" -c "${text}" -i ${id}`);
 
@@ -488,7 +488,7 @@ class Api {
      * @param {(string | number)} id Notification id is a value previously used to show notification with command "termux-notification --id". 
      */
 
-     async termux_notification_remove(id) {
+    async termux_notification_remove(id) {
 
         await execut(`termux-notification-remove ${id}`);
 
@@ -506,7 +506,7 @@ class Api {
      * @param {string} filepath file path.
      */
 
-     async termux_share(action = "view", filepath) {
+    async termux_share(action = "view", filepath) {
 
         await execut(`termux-share -a ${action} ${filepath}`);
 
@@ -530,9 +530,48 @@ class Api {
      * @return {object} Output displayed in json format.
      */
 
-     async termux_sensor(callback) {
+    async termux_sensor(callback) {
 
         let Output = await execut(`termux-sensor -l`);
+
+        if (callback) {
+
+            callback(JSON?.parse(Output));
+
+        }
+
+        return JSON?.parse(Output);
+
+    }
+
+    /** 
+     * List SMS messages. 
+     * 
+     * @example 
+     * 
+     * const type = "inbox"
+     * const limit = 10
+     * const sender = undefined || "all" // the number for locate message : To display all senders, type the "all" or don't assign a value to the variable
+     * 
+     * await api.termux_sms_list(type, limit, sender, (e) => {
+     *   console.log(e);
+     * });
+     * 
+     * or 
+     * 
+     * const sensor = await api.termux_sms_list(type, limit, sender);
+     * console.log(sensor);
+     *
+     * @param {"all" | "inbox" | "sent" | "draft" | "outbox"} type the type of messages to list (default: inbox): all|inbox|sent|draft|outbox
+     * @param {(number | string)} limit offset in sms list (default: 10)
+     * @param {(number | string)} sender the number for locate message | (default: "all")
+     * @param {function} callback Output displayed in json format. 
+     * @return {object} Output displayed in json format.
+     */
+
+    async termux_sms_list(type, limit = 10, sender = "all", callback) {
+
+        let Output = await execut(`termux-sms-list -t ${type} -l ${limit} ${sender === "all" || sender === undefined ? '' : `-f ${sender}`}`);
 
         if (callback) {
 
