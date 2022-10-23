@@ -373,6 +373,20 @@ const values = "on" // on - enable torch. | off - disable torch.
 await api.termux_torch(values);
 ```
 
+- [termux-wifi-connectioninfo](https://wiki.termux.com/wiki/Termux-wifi-connectioninfo)
+Print information about current Wi-Fi connection. This information include: SSID (AP name), BSSID (AP mac address), device IP and other. 
+
+```js
+await api.termux_wifi_connectioninfo((e) => {
+    console.log(e);
+});
+
+or  
+
+const wifi = await api.termux_wifi_connectioninfo();
+console.log(wifi);
+```
+
 # License
 
 [ MIT license ](https://github.com/rn0x/termux-api-library/blob/main/LICENSE)

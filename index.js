@@ -744,6 +744,40 @@ class Api {
         await execut(`termux-torch ${values}`);
 
     }
+
+    /** 
+     * Get information about the current wifi connection.
+      
+     * Print information about current Wi-Fi connection. This information include: SSID (AP name), BSSID (AP mac address), device IP and other. 
+     * 
+     * @example 
+     * 
+     * await api.termux_wifi_connectioninfo((e) => {
+     *     console.log(e);
+     * });
+     * 
+     * or 
+     * 
+     * const wifi = await api.termux_wifi_connectioninfo();
+     * console.log(wifi);
+     *
+     * @param {function} callback Output displayed in json format. 
+     * @return {object} Output displayed in json format.
+     */
+
+    async termux_wifi_connectioninfo(callback) {
+
+        let Output = await execut(`termux-wifi-connectioninfo`);
+
+        if (callback) {
+
+            callback(JSON?.parse(Output));
+
+        }
+
+        return JSON?.parse(Output);
+
+    }
 }
 
 module.exports = new Api
