@@ -29,6 +29,25 @@ class Api {
     constructor() {
 
         /**
+         * Check if the device is Android (termux) 
+         * 
+         * @example 
+         * 
+         * const isTermux = api.isTermux; // return is true or false
+         
+         * if (isTermux) {
+
+         *    await api.termux_wifi_connectioninfo((e) => {
+         *         console.log(e);
+         *     });
+         * 
+         * }
+         * 
+        */
+
+        this.isTermux = process.platform === 'android' ? true : false
+
+        /**
          * Play specified file using Media Player API.   
          * 
          * @example 
@@ -832,6 +851,64 @@ class Api {
 
         return JSON?.parse(Output);
 
+    }
+
+    /** 
+     * check if termux-api is installed on your Android
+     * 
+     * @example 
+     * 
+     * await api.isTermuxApi((e) => {
+     *    console.log(e);
+     * });
+     * 
+     * or 
+     * 
+     * const isTermuxApi = await api.isTermuxApi();
+     * console.log(isTermuxApi)
+     *
+     * @param {function} callback Output displayed in json format. 
+     * @return {boolean} Output displayed in json format.
+     */
+
+    async isTermuxApi(callback) {
+
+        let Output = await execut('termux-battery-status');
+
+        if (isJSON(Output)) {
+
+            if (callback) {
+
+                callback(true)
+
+            }
+            return true
+
+        }
+
+        else {
+
+            if (callback) {
+
+                callback(false);
+
+            }
+            return false;
+        }
+    }
+}
+
+/** 
+* check if a string is a valid JSON string
+* @param {string}  str
+* @return {boolean} return is true or false
+*/
+
+function isJSON(str) {
+    try {
+        return (JSON.parse(str) && !!str);
+    } catch (e) {
+        return false;
     }
 }
 

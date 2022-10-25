@@ -41,6 +41,36 @@ import api from 'termux-api-library';
 ```
 
 
+- isTermux
+Check if the device is Android (termux)
+
+```js
+const isTermux = api.isTermux // return is true or false
+
+if (isTermux) {
+
+    await api.termux_wifi_connectioninfo((e) => {
+        console.log(e);
+    });
+
+}
+```
+
+- isTermuxApi
+check if termux-api is installed on your Android
+
+```js
+await api.isTermuxApi((e) => {
+    console.log(e); // return is true or false
+});
+
+or
+
+const isTermuxApi = await api.isTermuxApi();
+console.log(isTermuxApi); // return is true or false
+
+```
+
 - [termux-battery-status](https://wiki.termux.com/wiki/Termux-battery-status)
 
 Get the status of the device battery.
