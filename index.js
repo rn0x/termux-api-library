@@ -409,7 +409,7 @@ class Api {
 
         if (multiple_lines !== inputNumbers) {
 
-            await execut(`termux-dialog -i "${hint}" -t "${title}" ${m} ${n}, ${p}`, (e) => {
+            await execut(`termux-dialog -i "${hint}" -t "${title}" ${m} ${n} ${p}`, (e) => {
                 callback(JSON?.parse(e))
             });
 
