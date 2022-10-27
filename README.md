@@ -71,6 +71,10 @@ console.log(isTermuxApi); // return is true or false
 
 ```
 
+<p align="center">
+  <img align="center" src="/.github/README/1.jpg" alt="termux-api-library">
+</p>
+
 - [termux-battery-status](https://wiki.termux.com/wiki/Termux-battery-status)
 
 Get the status of the device battery.
@@ -84,6 +88,10 @@ console.log(e);
 });
 
 ```
+
+<p align="center">
+  <img align="center" src="/.github/README/2.jpg" alt="termux-api-library">
+</p>
 
 - [termux-brightness](https://wiki.termux.com/wiki/Termux-brightness)
 
@@ -109,6 +117,10 @@ console.log(e);
 
 ```
 
+<p align="center">
+  <img align="center" src="/.github/README/3.jpg" alt="termux-api-library">
+</p>
+
 - [termux-camera-info](https://wiki.termux.com/wiki/Termux-camera-info)
 
 Get information about device camera(s).
@@ -123,6 +135,10 @@ console.log(e);
 
 ```
 
+<p align="center">
+  <img align="center" src="/.github/README/6.jpg" alt="termux-api-library">
+</p>
+
 - [termux-camera-photo](https://wiki.termux.com/wiki/Termux-camera-photo)
 
 Take a photo and save it to a file in JPEG format.
@@ -132,6 +148,10 @@ Take a photo and save it to a file in JPEG format.
 await api.termux_camera_photo(0, './test.jpeg');
 
 ```
+
+<p align="center">
+  <img align="center" src="/.github/README/5.jpg" alt="termux-api-library">
+</p>
 
 - [termux-clipboard-get](https://wiki.termux.com/wiki/Termux-clipboard-get)
 
@@ -146,6 +166,10 @@ console.log(e);
 })
 
 ```
+
+<p align="center">
+  <img align="center" src="/.github/README/4.jpg" alt="termux-api-library">
+</p>
 
 - [termux-clipboard-set](https://wiki.termux.com/wiki/Termux-clipboard-set)
 
@@ -171,6 +195,10 @@ console.log(e);
 
 ```
 
+<p align="center">
+  <img align="center" src="/.github/README/9.jpg" alt="termux-api-library">
+</p>
+
 - [termux-dialog](https://wiki.termux.com/wiki/Termux-dialog)
 
 Show a text entry dialog.
@@ -189,6 +217,11 @@ console.log(e);
 
 ```
 
+<p align="center">
+  <img align="center" src="/.github/README/8.jpg" alt="termux-api-library">
+  <img align="center" src="/.github/README/7.jpg" alt="termux-api-library">
+</p>
+
 - termux-download
 
 Download a files
@@ -205,6 +238,10 @@ await api.termux_download(url, filename, savePath);
 
 ```
 
+<p align="center">
+  <img align="center" src="/.github/README/12.jpg" alt="termux-api-library">
+</p>
+
 - [termux-fingerprint](https://wiki.termux.com/wiki/Termux-fingerprint)
 
 Use fingerprint sensor on device to check for authentication.
@@ -218,6 +255,11 @@ console.log(e);
 })
 
 ```
+
+<p align="center">
+  <img align="center" src="/.github/README/11.jpg" alt="termux-api-library">
+  <img align="center" src="/.github/README/10.jpg" alt="termux-api-library">
+</p>
 
 - [termux-location](https://wiki.termux.com/wiki/Termux-location)
 
@@ -238,6 +280,10 @@ const data = await api.termux_location('gps', 'once')
 console.log(data);
 
 ```
+
+<p align="center">
+  <img align="center" src="/.github/README/15.jpg" alt="termux-api-library">
+</p>
 
 - [termux-media-player](https://wiki.termux.com/wiki/Termux-media-player)
 
@@ -298,6 +344,10 @@ Display a system notification.
 await api.termux_notification(title, text, id);
 ```
 
+<p align="center">
+  <img align="center" src="/.github/README/14.jpg" alt="termux-api-library">
+</p>
+
 - [termux-notification-remove](https://wiki.termux.com/wiki/Termux-notification-remove)
 Remove a notification previously shown with termux-notification --id.
 
@@ -319,6 +369,12 @@ const sensor = await api.termux_sensor();
 console.log(sensor);
 ```
 
+<p align="center">
+  <img align="center" src="/.github/README/13.jpg" alt="termux-api-library">
+</p>
+
+
+
 - [termux-share](https://wiki.termux.com/wiki/Termux-share)
 Share a file specified as argument received on stdin.
 
@@ -326,6 +382,10 @@ Share a file specified as argument received on stdin.
 const filepath = "../image.jpeg"
 await api.termux_share('send', filepath);
 ```
+
+<p align="center">
+  <img align="center" src="/.github/README/17.jpg" alt="termux-api-library">
+</p>
 
 - [termux-sms-list](https://wiki.termux.com/wiki/Termux-sms-list)
 List SMS messages.
@@ -344,6 +404,11 @@ or
 const list = await api.termux_sms_list(type, limit, sender);
 console.log(list);
 ```
+
+<p align="center">
+  <img align="center" src="/.github/README/16.jpg" alt="termux-api-library">
+</p>
+
 
 - [termux-sms-send](https://wiki.termux.com/wiki/Termux-sms-send)
 Send a SMS message to the specified recipient number(s).
@@ -376,6 +441,11 @@ const info = await api.termux_telephony_cellinfo();
 console.log(info);
 ```
 
+<p align="center">
+  <img align="center" src="/.github/README/20.jpg" alt="termux-api-library">
+</p>
+
+
 - [termux-telephony-deviceinfo](https://wiki.termux.com/wiki/Termux-telephony-deviceinfo)
 Get information about the telephony device.
 
@@ -383,6 +453,11 @@ Get information about the telephony device.
 const deviceinfo = await api.termux_telephony_deviceinfo();
 console.log(deviceinfo);
 ```
+
+<p align="center">
+  <img align="center" src="/.github/README/19.jpg" alt="termux-api-library">
+</p>
+
 
 - [termux-toast](https://wiki.termux.com/wiki/Termux-toast)
 Show text in a Toast (a transient popup). 
@@ -394,6 +469,11 @@ const text_color = "white"
 const text = "hello world"
 await api.termux_toast(position, background, text_color, text);
 ```
+
+<p align="center">
+  <img align="center" src="/.github/README/18.jpg" alt="termux-api-library">
+</p>
+
 
 - [termux-torch](https://wiki.termux.com/wiki/Termux-torch)
 Toggle LED Torch on device.
@@ -417,6 +497,11 @@ const wifi = await api.termux_wifi_connectioninfo();
 console.log(wifi);
 ```
 
+<p align="center">
+  <img align="center" src="/.github/README/22.jpg" alt="termux-api-library">
+</p>
+
+
 - [termux-wifi-enable](https://wiki.termux.com/wiki/Termux-wifi-enable)
 Toggles Wi-Fi on/off. 
 
@@ -438,6 +523,10 @@ or
 const scaninfo = await api.termux_wifi_scaninfo();
 console.log(scaninfo);
 ```
+
+<p align="center">
+  <img align="center" src="/.github/README/21.jpg" alt="termux-api-library">
+</p>
 
 # License
 
