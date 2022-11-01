@@ -22,6 +22,10 @@ pkg install termux-api
 
 - Finally get this node library
 
+[![NPM][termux-api-library-icon] ][termux-api-library-url]
+
+[termux-api-library-icon]: https://nodei.co/npm/termux-api-library.png?downloads=true
+[termux-api-library-url]: https://npmjs.org/package/termux-api-library
 ```
 
 npm i --save termux-api-library
